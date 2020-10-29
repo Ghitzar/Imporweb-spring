@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/chosen.min.css}">
+<link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+<link rel="stylesheet" th:href="@{/css/solid.min.css}">
+<script src="https://kit.fontawesome.com/a4c335f472.js" crossorigin="anonymous"></script>
+<title>Importweb</title>
+</head>
+<body>
+
+	<nav th:replace="fragmentos/template ::fragmento"></nav>
+
+	<h1>Productos</h1>
+
+	<div class="container"> 
+	
+	<div class="row jumbotron">
+			<div th:each="producto: ${productos}" class="col-md-4 py-4">
+
+				<div class="card card1 shadow" style="width: 16rem;">
+					<div class="efecto_size">
+					
+						<img th:src="@{/images/adidas.jpg}" class="card-img-top"
+							 height="250">
+					</div>
+
+					<div class="card-body">
+					    
+					    <label th:text="${producto.categoria.marca.nombreMarca} "></label>
+					    
+						<h4 class="card-title" th:text="${producto.nombreProducto}"></h4>
+						
+						<label th:text=" ${'$ '} + ${producto.precio} +${' soles'}"></label> <br />
+						
+						<a href="#"  class="btn btn-primary">Agregar al carrito</a>
+							
+					
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	
+	
+	
+	</div> 
+
+
+
+	<footer th:replace="fragmentos/template ::piedepagina"></footer>
+	
+</body>
+</html>

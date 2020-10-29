@@ -58,4 +58,9 @@ public class ProductoServiceImpl implements ProductoService, Serializable{
 		return productoRepository.findByNombreProductoStartingWith(nombreProducto);
 	}
 
+	@Override
+	public List<Producto> findByCategoriaZapatilla() {
+		return productoRepository.findByCategoriaZapatilla();
+	}
+
 }

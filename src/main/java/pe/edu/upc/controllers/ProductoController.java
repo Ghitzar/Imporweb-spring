@@ -1,5 +1,6 @@
 package pe.edu.upc.controllers;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pe.edu.upc.models.entities.Categoria;
 import pe.edu.upc.models.entities.Producto;
@@ -78,10 +80,29 @@ public class ProductoController {
 		return "producto/search";
 	}
 	
+	@GetMapping("/buscarCategoriaZapatilla")
+	public String buscarCategoria(Model model) {
+		model.addAttribute("productos", productoService.findByCategoriaZapatilla());
+		return "producto/buscarCategoria";
+	}
 	
-	
-	
-	
+//	@GetMapping("/agregarLista/{id}") 	
+//	public String agregarLista(@PathVariable Integer id, Model model,RedirectAttributes objRedir) 
+//	
+//	{ 		
+//		
+//		Optional <Producto> productoSearch = Optional.ofNullable(productoService.findById(id)); 	
+//		if (productoSearch == null) {
+//			objRedir.addFlashAttribute("mensaje", "Ocurrio un rochesin");
+//			return "redirect:/";
+//		}
+//		else {
+//			model.addAttribute("productos", productoSearch);
+//			return "producto/listacarrito";
+//	
+//		
+//		}
+//		}
 	
 	
 	

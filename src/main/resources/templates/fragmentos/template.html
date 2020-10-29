@@ -7,7 +7,7 @@
 
 	<nav th:fragment="fragmento">
 	 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" th:href="@{/}"> <img th:src="@{/images/tecnoware.png}" width="200" height="60" alt="logo" align="middle"></img></a>
+	  <a class="navbar-brand" th:href="@{/}"> <img th:src="@{/images/imporweb.png}" width="200" height="60" alt="logo" align="middle"></img></a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -24,10 +24,10 @@
 	      </li>
 	      <li class="nav-item dropdown">
 	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	          Dropdown link
+	          Categoria
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-	          <a class="dropdown-item" href="#">Action</a>
+	          <a class="dropdown-item" th:href="@{/productos/buscarCategoriaZapatilla}">Zapatilla</a>
 	          <a class="dropdown-item" href="#">Another action</a>
 	          <a class="dropdown-item" href="#">Something else here</a>
 	        </div>
@@ -38,7 +38,7 @@
 
 	</nav>
    
-	<footer th:fragment="piedepagina" class="bg-dark text-white py-4">
+	<footer th:fragment="piedepagina" class="bg-dark text-white py-4" style="flex: 0 0 auto">
 		<div class="container ">
 			<nav class="row">
 			<!-- logo -->
