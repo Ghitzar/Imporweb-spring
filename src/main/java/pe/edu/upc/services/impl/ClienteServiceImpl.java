@@ -54,8 +54,7 @@ public class ClienteServiceImpl implements ClienteService, Serializable {
 	@Transactional(readOnly = true)
 	@Override
 	public List<Cliente> findBynombreCliente(String cliente) throws Exception {
-		return clienteRepostory.findBynombreClienteStartingWith(cliente);
-		
+		return clienteRepostory.findBynombreClienteStartingWith(cliente);	
 	}
 
 }
