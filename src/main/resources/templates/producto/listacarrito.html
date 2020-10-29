@@ -53,7 +53,7 @@
 							<td th:text="${producto.catgoria.marca.nombreMarca}" class="badge badge-secondary"></td>
 							<td th:text="${producto.precio}"></td>
 							
-							<td><a href="#"
+							<td><a th:href="@{/prodcutos/agregarLista/}+${producto.idProducto}"
 								onclick="return confirm('Estas seguro de eliminar este Libro')">Eliminar</a></td>
 
 						</tr>

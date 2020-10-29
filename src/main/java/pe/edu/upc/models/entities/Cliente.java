@@ -20,7 +20,7 @@ public class Cliente {
 	@Column(name = "dni", nullable = false, length = 8)
 	private String dni;
 
-	@Column(name = "direccion", nullable = false, length = 8)
+	@Column(name = "direccion", nullable = false, length = 20)
 	private String direccion;
 
 	public Integer getIdCliente() {
