@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/chosen.min.css}">
+<link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+<link rel="stylesheet" th:href="@{/css/solid.min.css}">
+
+<title>Importweb</title>
+</head>
+<body>
+
+	<nav th:replace="fragmentos/template ::fragmento"></nav>
+
+	<h1>Categorias</h1>
+
+	<div class="container">
+
+
+		<table class="table table-sm table-dark">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nombre de categoria</th>
+					<th scope="col">Marca</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="categoria : ${categorias}">
+					<th scope="row" th:text="${categoria.idCategoria}"></th>
+					<td th:text="${categoria.nombreCategoria}"></td>
+					<td th:text="${categoria.marca.nombreMarca}"></td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<!-- Obtener data mediante un formulario -->
+	<form th:action="@{/categorias/save}" th:object="${categoria}"
+		method="post">
+		<div class="form-row">
+
+			<div class="col">
+				<input type="text" class="form-control"
+					th:field="*{nombreCategoria}" placeholder="Nombre de categoria">
+			</div>
+
+			<div class="col">
+				<select th:field="*{marca}" class="form-control">
+					<option th:each="marca : ${marcas}" th:value="${marca.idMarca}"
+						th:text="${marca.nombreMarca}"></option>
+				</select>
+			</div>
+
+		</div>
+
+
+		<button type="submit" class="btn btn-primary">Grabar</button>
+
+	</form>
+
+
+	<!-- Optional JavaScript; choose one of the two! -->
+	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/fontawesome.min.js}"></script>
+</body>
+</html>

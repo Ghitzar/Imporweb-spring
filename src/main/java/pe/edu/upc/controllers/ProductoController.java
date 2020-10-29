@@ -12,65 +12,81 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pe.edu.upc.models.entities.Categoria;
+import pe.edu.upc.models.entities.Producto;
+import pe.edu.upc.services.CategoriaService;
+import pe.edu.upc.services.ProductoService;
 
-import pe.edu.upc.models.entities.Marca;
-import pe.edu.upc.services.MarcaService;
+
+
 
 @Controller
-@RequestMapping("/marcas")
-public class MarcaController {
+@RequestMapping("/productos")
+public class ProductoController {
 	
 	@Autowired
-	private MarcaService marcaService;
+	private ProductoService productoService;
 	
-	
+	@Autowired
+	private CategoriaService categoriaService;
 	
 	@GetMapping
 	public String inicio(Model model) {
-		Marca marca = new Marca();
+		Producto producto = new Producto();
 		
 		try {
-			List<Marca> marcas = marcaService.findAll();
-			
-			model.addAttribute("marcas", marcas);
-			model.addAttribute("marca", marca);
-			
+			List<Producto> productos = productoService.findAll();
+			List<Categoria> categorias = categoriaService.findAll();
+			model.addAttribute("productos", productos);
+			model.addAttribute("producto", producto);
+			model.addAttribute("categorias", categorias);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		return "marca/inicio";
+		return "producto/inicio";
 	}
 
 	@PostMapping("save")
-	public String save(@ModelAttribute("marca") Marca marca) {
+	public String save(@ModelAttribute("producto") Producto producto) {
 		try {
-			marcaService.save(marca);
+			productoService.save(producto);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		return "redirect:/marcas";
+		return "redirect:/productos";
 	}
 	
 	@GetMapping("/{id}/p")
 	public String view(@PathVariable("id") Integer id, Model model) {
 		try {
-			Optional<Marca> optional = marcaService.findById(id);
+			Optional<Producto> optional = productoService.findById(id);
 			if(optional.isPresent()) {
-				model.addAttribute("marca", optional.get());
-				return "marcas/view";
+				model.addAttribute("producto", optional.get());
+				return "productos/view";
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/marcas";
+		return "redirect:/productos";
 	}
 	
 	@GetMapping("search")
 	public String search() {
-		return "marca/search";
+		return "producto/search";
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }

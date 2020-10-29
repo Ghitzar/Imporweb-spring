@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/chosen.min.css}">
+<link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+<link rel="stylesheet" th:href="@{/css/solid.min.css}">
+
+<title>Importweb</title>
+</head>
+<body>
+
+	<nav th:replace="fragmentos/template ::fragmento"></nav>
+
+	<h1>Productos</h1>
+
+	<div class="container">
+
+
+		<table class="table table-sm table-dark">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nombre de producto</th>
+					<th scope="col">Precio</th>
+					<th scope="col">Categoria</th>
+					<th scope="col">Marca</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="producto : ${productos}">
+					<th scope="row" th:text="${producto.idProducto}"></th>
+					<td th:text="${producto.nombreProducto}"></td>
+					<td th:text="${producto.precio}"></td>
+					<td th:text="${producto.categoria.nombreCategoria}"></td>
+                    <td th:text="${producto.categoria.marca.nombreMarca}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<!-- Obtener data mediante un formulario -->
+	<form th:action="@{/productos/save}" th:object="${producto}"
+		method="post">
+		<div class="form-row">
+
+			<div class="col">
+				<input type="text" class="form-control"
+					th:field="*{nombreProducto}" placeholder="Nombre producto">
+			</div>
+			
+			<div class="col">
+				<input type="text" class="form-control"
+					th:field="*{precio}" placeholder="Precio">
+			</div>
+
+			<div class="col">
+				<select th:field="*{categoria}" class="form-control">
+					<option th:each="categoria : ${categorias}" th:value="${categoria.idCategoria}"
+						th:text="${categoria.nombreCategoria}"></option>
+				</select>
+			</div>
+
+		</div>
+
+
+		<button type="submit" class="btn btn-primary">Grabar</button>
+
+	</form>
+
+
+	<!-- Optional JavaScript; choose one of the two! -->
+	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/fontawesome.min.js}"></script>
+</body>
+</html>

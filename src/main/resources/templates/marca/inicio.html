@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/chosen.min.css}">
+<link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+<link rel="stylesheet" th:href="@{/css/solid.min.css}">
+
+<title>Importweb</title>
+</head>
+<body>
+
+	<nav th:replace="fragmentos/template ::fragmento"></nav>
+
+	<h1>Marcas</h1>
+
+	<div class="container">
+		<table class="table table-sm table-dark">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Marca</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="marca : ${marcas}">
+					<th scope="row" th:text="${marca.idMarca}"></th>
+					<td th:text="${marca.nombreMarca}"></td>
+
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<!-- Obtener data mediante un formulario -->
+	<form th:action="@{/marcas/save}" th:object="${marca}" method="post">
+		<div class="form-row">
+
+			<div class="col">
+				<input type="text" class="form-control" th:field="*{nombreMarca}"
+					placeholder="Marca">
+			</div>
+
+
+		</div>
+
+
+		<button type="submit" class="btn btn-primary">Grabar</button>
+
+	</form>
+
+
+	<!-- Optional JavaScript; choose one of the two! -->
+	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/fontawesome.min.js}"></script>
+</body>
+</html>

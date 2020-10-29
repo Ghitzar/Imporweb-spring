@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/chosen.min.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/solid.min.css}">
+
+    <title>Importweb</title>
+  </head>
+  <body>
+    
+   <nav th:replace="fragmentos/template ::fragmento">
+       
+	</nav>
+	
+	<div class="container">
+			<form id="myform">
+				<div class="row clearfix">
+					<div class="col-md-12 column" align="center">
+						<img th:src="@{/images/fotoinicio.jpg}" width="1000" height="600" alt="logo" align="middle"></img>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+    <!-- Optional JavaScript; choose one of the two! -->
+    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/fontawesome.min.js}"></script>
+  </body>
+</html>
