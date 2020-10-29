@@ -13,64 +13,65 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-import pe.edu.upc.models.entities.Cliente;
-import pe.edu.upc.services.ClienteService;
+import pe.edu.upc.models.entities.Empleado;
+import pe.edu.upc.services.EmpleadoService;
 
 @Controller
-@RequestMapping("/clientes")
-public class ClienteController {
+@RequestMapping("/empleados")
+public class EmpleadoController {
 
 	@Autowired
-	private ClienteService clienteService;
+	private EmpleadoService empleadoService;
 	
 	
 	
 	@GetMapping
 	public String inicio(Model model) {
-		Cliente cliente = new Cliente();
+		Empleado empleado = new Empleado();
 		
 		try {
-			List<Cliente> clientes = clienteService.findAll();
+			List<Empleado> empleados = empleadoService.findAll();
 			
-			model.addAttribute("clientes", clientes);
-			model.addAttribute("cliente", cliente);
-		
-		} catch (Exception e) {
+			model.addAttribute("empleados",empleados);
+			model.addAttribute("empleado", empleado);
+			
+		}catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		return "cliente/inicio";
+		return "empleado/inicio";
 	}
 	
 	@PostMapping("save")
-	public String save(@ModelAttribute("cliente") Cliente cliente) {
+	public String save(@ModelAttribute("empleado") Empleado empleado) {
 		try {
-			clienteService.save(cliente);
-		} catch (Exception e) {
+			empleadoService.save(empleado);
+		}catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		return "redirect:/clientes";
+		return "redirect:/empleados";
 	}
 	
-	@GetMapping("/{id]/p")
+	@GetMapping("/{id}/p")
 	public String view(@PathVariable("id") Integer id, Model model) {
 		try {
-			Optional<Cliente> optional = clienteService.findById(id);
+			Optional<Empleado> optional = empleadoService.findById(id);
 			if(optional.isPresent()) {
-				model.addAttribute("cliente", optional.get());
-				return "cliente/view";
+				model.addAttribute("empleado", optional.get());
+				return "empleados/view";
 			}
 		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}
-		return "redirect:/clientes";
+		return "redirect:/empleados";
 	}
 	
 	@GetMapping("search")
 	public String search() {
-		return "cliente/search";
+		return "empleado/search";
 	}
 	
 }
+

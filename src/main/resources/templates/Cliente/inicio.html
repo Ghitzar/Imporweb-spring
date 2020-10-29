@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/chosen.min.css}">
+<link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+<link rel="stylesheet" th:href="@{/css/solid.min.css}">
+<script src="https://kit.fontawesome.com/a4c335f472.js" crossorigin="anonymous"></script>
+
+<title>Importweb</title>
+</head>
+<body>
+
+	<nav th:replace="fragmentos/template ::fragmento"></nav>
+
+	<h1>Clientes</h1>
+
+	<div class="container">
+		<table class="table table-sm table-dark">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nombre de cliente</th>
+					<th scope="col">DNI</th>
+					<th scope="col">Direccion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cliente : ${clientes}">
+					<th scope="row" th:text="${cliente.idCliente}"></th>
+					<td th:text="${cliente.nombreCliente}"></td>
+					<td th:text="${cliente.dni}"></td>
+					<td th:text="${cliente.direccion}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<!-- Obtener data mediante un formulario -->
+	<form th:action="@{/clientes/save}" th:object="${cliente}" method="post">
+		<div class="form-row">
+
+			<div class="col">
+				<input type="text" class="form-control" th:field="*{nombreCliente}"
+					placeholder="Nombre">
+			</div>
+			
+			<div class="col">
+				<input type="text" class="form-control" th:field="*{dni}"
+					placeholder="DNI">
+			</div>
+			
+			<div class="col">
+				<input type="text" class="form-control" th:field="*{direccion}"
+					placeholder="Direccion">
+			</div>
+
+
+		</div>
+
+
+		<button type="submit" class="btn btn-primary">Grabar</button>
+
+	</form>
+	<footer th:replace="fragmentos/template ::piedepagina"></footer>
+
+
+</body>
+</html>

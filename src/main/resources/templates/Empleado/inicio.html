@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/chosen.min.css}">
+<link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+<link rel="stylesheet" th:href="@{/css/solid.min.css}">
+<script src="https://kit.fontawesome.com/a4c335f472.js" crossorigin="anonymous"></script>
+
+<title>Importweb</title>
+</head>
+<body>
+
+	<nav th:replace="fragmentos/template ::fragmento"></nav>
+
+	<h1>Empleados</h1>
+
+	<div class="container">
+		<table class="table table-sm table-dark">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nombre de empleado</th>
+					<th scope="col">DNI</th>
+					<th scope="col">Email</th>
+					<th scope="col">Cargo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="empleado : ${empleados}">
+					<th scope="row" th:text="${empleado.idEmpleado}"></th>
+					<td th:text="${empleado.nombreEmpleado}"></td>
+					<td th:text="${empleado.apellidoEmpleado}"></td>
+					<td th:text="${empleado.dni}"></td>
+					<td th:text="${empleado.email}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<!-- Obtener data mediante un formulario -->
+	<form th:action="@{/empleados/save}" th:object="${empleado}" method="post">
+		<div class="form-row">
+
+			<div class="col">
+				<input type="text" class="form-control" th:field="*{nombreEmpleado}"
+					placeholder="Nombre">
+			</div>
+			
+			<div class="col">
+				<input type="text" class="form-control" th:field="*{apellidoEmpleado}"
+					placeholder="Apellido">
+			</div>
+			
+			<div class="col">
+				<input type="text" class="form-control" th:field="*{dni}"
+					placeholder="DNI">
+			</div>
+			
+			<div class="col">
+				<input type="text" class="form-control" th:field="*{email}"
+					placeholder="Email">
+			</div>
+
+
+		</div>
+
+
+		<button type="submit" class="btn btn-primary">Grabar</button>
+
+	</form>
+	<footer th:replace="fragmentos/template ::piedepagina"></footer>
+
+
+</body>
+</html>
