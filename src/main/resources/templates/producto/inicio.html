@@ -11,7 +11,7 @@
 <link rel="stylesheet" th:href="@{/css/chosen.min.css}">
 <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
 <link rel="stylesheet" th:href="@{/css/solid.min.css}">
-
+<script src="https://kit.fontawesome.com/a4c335f472.js" crossorigin="anonymous"></script>
 <title>Importweb</title>
 </head>
 <body>
@@ -75,10 +75,7 @@
 
 	</form>
 
-
-	<!-- Optional JavaScript; choose one of the two! -->
-	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
-	<script th:src="@{/js/bootstrap.min.js}"></script>
-	<script th:src="@{/js/fontawesome.min.js}"></script>
+	<footer th:replace="fragmentos/template ::piedepagina"></footer>
+	
 </body>
 </html>
