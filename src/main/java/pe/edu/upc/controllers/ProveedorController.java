@@ -26,12 +26,10 @@ public class ProveedorController {
 	@GetMapping
 	public String inicio(Model model) {
 		Proveedor proveedor = new Proveedor();
-		
 		try {
 			List<Proveedor> proveedores = ProveedorService.findAll();
-			
-			model.addAttribute("clientes", proveedores);
-			model.addAttribute("cliente", proveedor);
+			model.addAttribute("proveedores", proveedores);
+			model.addAttribute("proveedor", proveedor);
 		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -41,7 +39,7 @@ public class ProveedorController {
 	}
 	
 	@PostMapping("save")
-	public String save(@ModelAttribute("cliente") Proveedor proveedor) {
+	public String save(@ModelAttribute("proveedor") Proveedor proveedor) {
 		try {
 			ProveedorService.save(proveedor);
 		} catch (Exception e) {
