@@ -1,16 +1,19 @@
 package pe.edu.upc.services.impl;
 
 import java.io.Serializable;
+
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pe.edu.upc.models.entities.Importacion;
 import pe.edu.upc.models.repositories.ImportacionRepository;
 import pe.edu.upc.services.ImportacionService;
 
+@Service
 public class ImportacionServiceImpl implements ImportacionService, Serializable {
 
 	private static final long serialVersionUID = 1L;

@@ -75,4 +75,16 @@ public class Importacion {
 	@ManyToOne	// paso 2 distrito_id
 	@JoinColumn(name = "proveedor_id")	//3
 	private Proveedor proveedor;
+	
+	@ManyToOne	// paso 2 distrito_id
+	@JoinColumn(name = "transporte_id")	//3
+	private Transporte transporte;
+
+	public Transporte getTransporte() {
+		return transporte;
+	}
+
+	public void setTransporte(Transporte transporte) {
+		this.transporte = transporte;
+	}
 }

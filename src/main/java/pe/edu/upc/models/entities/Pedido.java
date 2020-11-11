@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +24,20 @@ public class Pedido {
 
 	@Column(name = "monto", nullable = false, length = 20)
 	private String monto;
+
+
+	@ManyToOne	// paso 2 distrito_id
+	@JoinColumn(name = "transporte_id")	//3
+	private Transporte transporte;
+	
+	public Transporte getTransporte() {
+		return transporte;
+	}
+
+
+	public void setTransporte(Transporte transporte) {
+		this.transporte = transporte;
+	}
 
 
 	public Integer getIdPedido() {

@@ -9,6 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ProveedorRepository extends JpaRepository <Proveedor, Integer>{
-	
-	List<Proveedor>findBynombreProveedorStartingWithList(String nombreProveedor)throws Exception;
+	List<Proveedor> findByNombreProveedorStartingWith(String nombreProveedor) throws Exception;
 }

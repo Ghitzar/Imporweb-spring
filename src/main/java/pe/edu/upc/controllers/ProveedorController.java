@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import pe.edu.upc.models.entities.Cliente;
-import pe.edu.upc.models.entities.Proveedor;
 import pe.edu.upc.services.ProveedorService;
+import pe.edu.upc.models.entities.Proveedor;
+
 
 @Controller
 @RequestMapping("/proveedores")

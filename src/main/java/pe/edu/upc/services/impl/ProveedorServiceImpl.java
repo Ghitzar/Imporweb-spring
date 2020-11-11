@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pe.edu.upc.models.entities.Proveedor;
 import pe.edu.upc.models.repositories.ProveedorRepository;
 import pe.edu.upc.services.ProveedorService;
 
+@Service
 public class ProveedorServiceImpl implements ProveedorService, Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -49,9 +51,11 @@ public class ProveedorServiceImpl implements ProveedorService, Serializable{
 		return ProveedorRepository.findById(id);
 	}
 	
+	
 	@Transactional(readOnly = true)
 	@Override
-	public List<Proveedor> findBynombreProveedor(String nombreProveedor) throws Exception {
-		return ProveedorRepository.findBynombreProveedorStartingWithList(nombreProveedor);
+	public List<Proveedor> findByNombreProveedor(String nombreProveedor) throws Exception {
+		return ProveedorRepository.findByNombreProveedorStartingWith(nombreProveedor);
 	}
+
 }

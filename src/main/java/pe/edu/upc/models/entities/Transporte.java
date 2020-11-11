@@ -30,10 +30,10 @@ public class Transporte {
 	private String tipo;
 
 	@OneToMany(mappedBy = "transporte")		// 1(@OneToMany), 4(mappedBy)
-	private List<Categoria> pedidos;
+	private List<Pedido> pedidos;
 
 	@OneToMany(mappedBy = "transporte")		// 1(@OneToMany), 4(mappedBy)
-	private List<Categoria> importaciones;
+	private List<Importacion> importaciones;
 	
 	public Transporte() {
 		pedidos = new ArrayList<>();
@@ -72,19 +72,19 @@ public class Transporte {
 		this.tipo = tipo;
 	}
 
-	public List<Categoria> getPedidos() {
+	public List<Pedido> getPedidos() {
 		return pedidos;
 	}
 
-	public void setPedidos(List<Categoria> pedidos) {
+	public void setPedidos(List<Pedido> pedidos) {
 		this.pedidos = pedidos;
 	}
 
-	public List<Categoria> getImportaciones() {
+	public List<Importacion> getImportaciones() {
 		return importaciones;
 	}
 
-	public void setImportaciones(List<Categoria> importaciones) {
+	public void setImportaciones(List<Importacion> importaciones) {
 		this.importaciones = importaciones;
 	}
 	
