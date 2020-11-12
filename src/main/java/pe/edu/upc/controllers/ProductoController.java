@@ -1,8 +1,13 @@
 package pe.edu.upc.controllers;
 
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +18,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import pe.edu.upc.models.entities.Categoria;
 import pe.edu.upc.models.entities.Producto;
@@ -32,6 +39,8 @@ public class ProductoController {
 	@Autowired
 	private CategoriaService categoriaService;
 	
+	
+	
 	@GetMapping
 	public String inicio(Model model) {
 		Producto producto = new Producto();
@@ -48,10 +57,42 @@ public class ProductoController {
 		}
 		return "producto/inicio";
 	}
+	
+//	@ModelAttribute("producto")
+//	public Producto createModel() {
+//	    return new Producto();
+//	}
+	
+//	@PostMapping("search")
+//	public String search(@ModelAttribute("producto") Producto producto, Model model) {	
+//		try {
+//			List<Producto> productos = productoService.findByNombreProducto(producto.getNombreProducto());
+//			model.addAttribute("productos", productos);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return "productos/result-search";
+//	}
 
 	@PostMapping("save")
-	public String save(@ModelAttribute("producto") Producto producto) {
+	public String save(@ModelAttribute("producto") Producto producto,@RequestParam("file") MultipartFile image) {
 		try {
+				if (!image.isEmpty()) {
+					
+					String uniqueFileName = UUID.randomUUID().toString().concat("_").concat(image.getOriginalFilename());
+					Path rootPath = Paths.get("uploads").resolve(uniqueFileName);
+					Path rootAbsolutPath = rootPath.toAbsolutePath();
+					try {
+						Files.copy(image.getInputStream(), rootAbsolutPath);
+	
+						producto.setImage(uniqueFileName);
+						
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+			
+				}
+			
 			productoService.save(producto);
 		} catch (Exception e) {
 			e.printStackTrace();

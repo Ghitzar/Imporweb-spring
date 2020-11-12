@@ -6,91 +6,108 @@
 <body>
 
 	<nav th:fragment="fragmento">
-	 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" th:href="@{/}"> <img th:src="@{/images/imporweb.png}" width="200" height="60" alt="logo" align="middle"></img></a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-	  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-	    <ul class="navbar-nav">
-	      <li class="nav-item active">
-	        <a class="nav-link" th:href="@{/marcas}">Marca</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" th:href="@{/categorias}">Categoria</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" th:href="@{/productos}">Producto</a>
-	      </li>
-	      
-	      <li class="nav-item">
-	        <a class="nav-link" th:href="@{/clientes}">Cliente</a>
-	      </li>
-	      
-	      <li class="nav-item">
-	        <a class="nav-link" th:href="@{/empleados}">Empleado</a>
-	      </li>
-	      
-	      <li class="nav-item dropdown">
-	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	          Categoria
-	        </a>
-	        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-	          <a class="dropdown-item" th:href="@{/productos/buscarCategoriaZapatilla}">Zapatilla</a>
-	          <a class="dropdown-item" href="#">Another action</a>
-	          <a class="dropdown-item" href="#">Something else here</a>
-	        </div>
-	      </li>
-	    </ul>
-	  </div>
-	</nav>
+		
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" th:href="@{/}"> <img
+				th:src="@{/images/imporweb.png}" width="200" height="60" alt="logo"
+				align="middle"></img></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			
+<!-- 			<form th:action="@{/productos/search}" th:object="${producto}" method="post" class="form-inline"> -->
+<!-- 				<input th:field="*{nombreProducto}" class="form-control mr-sm-2" -->
+<!-- 							type="search" placeholder="Buscar por nombre" aria-label="Search"> -->
+<!-- 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit"> -->
+<!-- 							<i class="fas fa-search"></i> -->
+<!-- 				</button> -->
+<!-- 			</form> -->
+					
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+
+					<li class="nav-item active"><a class="nav-link"
+						th:href="@{/marcas}">Marca</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/categorias}">Categoria</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/productos}">Agregar Producto</a></li>
+
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/clientes}">Cliente</a></li>
+
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/empleados}">Empleado</a></li>
+
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> Categoria </a>
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item"
+								th:href="@{/productos/buscarCategoriaZapatilla}">Zapatilla</a> <a
+								class="dropdown-item" href="#">Another action</a> <a
+								class="dropdown-item" href="#">Something else here</a>
+						</div></li>
+				</ul>
+			</div>
+		</nav>
 
 	</nav>
-   
-	<footer th:fragment="piedepagina" class="bg-dark text-white py-4" style="flex: 0 0 auto">
+	
+
+
+	<footer th:fragment="piedepagina" class="bg-dark text-white py-4"
+		style="flex: 0 0 auto">
 		<div class="container ">
 			<nav class="row">
-			<!-- logo -->
-			<a href="#" class="col-3 text-rest text-uppercase d-flex align-items-center">
-			<img  th:src="@{/images/tecnoware.png}" width="100" height="20" alt="logo" align="middle">
-			</a>
-			
-			<!-- menu1 -->
-			<ul class="col-3 list-unstyled">
-			 <li class="font-weight-bold text-uppercase">Has pedidos con confianza</li>
-			 <li><a href="#"  class="text-reset">¿Como hacer pedidos en Imporweb?</a></li>
-			 <li><a href="#"  class="text-reset">Terminos y condiciones</a></li>
-			 <li><a href="#"  class="text-reset">Cambios y Devoluciones</a></li>
-			
-			</ul>
-			
-			<!-- menu2 -->
-			<ul class="col-3 list-unstyled">
-			 <li class="font-weight-bold text-uppercase">Sobre Tecnoware</li>
-			 <li><a href="#"  class="text-reset">¿Quienes somos?</a></li>
-			 <li><a href="#"  class="text-reset">Libro de reclamaciones</a></li>
-			 <li><a href="#"  class="text-reset">Comprobante Electrónico</a></li>
-			 
-			</ul>
-			<!-- redes sociales -->
-			<ul class="col-3 list-unstyled">
-			 <li class="font-weight-bold text-uppercase">Siguenos</li>
-			 <li class="d-flex justify-content-between">
-			    <!--FB-->
-			 	<a href="#"  class="text-reset"><i class="fab fa-facebook-f"></i></a>
-			 	<!--TWITTER-->
-			    <a href="#"  class="text-reset"><i class="fab fa-twitter"></i></a>
-			    <!--INSTAGRAM-->
-			    <a href="#"  class="text-reset"><i class="fab fa-instagram"></i></a>
-			    <!--PINTERES-->
-			    <a href="#"  class="text-reset"><i class="fab fa-pinterest-p"></i></a>
-			 </li>
-			</ul>
-			
-			<div class="container col-4">
-			<span>Copyright &copy; Programación Web 2020</span>
-			</div> 
-			
+				<!-- logo -->
+				<a href="#"
+					class="col-3 text-rest text-uppercase d-flex align-items-center">
+					<img th:src="@{/images/tecnoware.png}" width="100" height="20"
+					alt="logo" align="middle">
+				</a>
+
+				<!-- menu1 -->
+				<ul class="col-3 list-unstyled">
+					<li class="font-weight-bold text-uppercase">Has pedidos con
+						confianza</li>
+					<li><a href="#" class="text-reset">¿Como hacer pedidos en
+							Imporweb?</a></li>
+					<li><a href="#" class="text-reset">Terminos y condiciones</a></li>
+					<li><a href="#" class="text-reset">Cambios y Devoluciones</a></li>
+
+				</ul>
+
+				<!-- menu2 -->
+				<ul class="col-3 list-unstyled">
+					<li class="font-weight-bold text-uppercase">Sobre Tecnoware</li>
+					<li><a href="#" class="text-reset">¿Quienes somos?</a></li>
+					<li><a href="#" class="text-reset">Libro de reclamaciones</a></li>
+					<li><a href="#" class="text-reset">Comprobante Electrónico</a></li>
+
+				</ul>
+				<!-- redes sociales -->
+				<ul class="col-3 list-unstyled">
+					<li class="font-weight-bold text-uppercase">Siguenos</li>
+					<li class="d-flex justify-content-between">
+						<!--FB--> <a href="#" class="text-reset"><i
+							class="fab fa-facebook-f"></i></a> <!--TWITTER--> <a href="#"
+						class="text-reset"><i class="fab fa-twitter"></i></a> <!--INSTAGRAM-->
+						<a href="#" class="text-reset"><i class="fab fa-instagram"></i></a>
+						<!--PINTERES--> <a href="#" class="text-reset"><i
+							class="fab fa-pinterest-p"></i></a>
+					</li>
+				</ul>
+
+				<div class="container col-4">
+					<span>Copyright &copy; Programación Web 2020</span>
+				</div>
+
 			</nav>
 		</div>
 		<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
@@ -99,10 +116,10 @@
 		<script th:src="@{/js/jquery-ui.min.js}"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 		<script th:src="@{/js/efectos.js}"></script>
-		
-		 <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
-    	<script th:src="@{/js/bootstrap.min.js}"></script>
-   		 <script th:src="@{/js/fontawesome.min.js}"></script>
+
+		<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/fontawesome.min.js}"></script>
 
 	</footer>
 

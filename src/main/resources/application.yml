@@ -1,8 +1,15 @@
 # PostgreSQL
 spring:
+
+  servlet:
+    # Subida de archivos   
+   multipart: 
+    max-file-size: 10MB 
+    max-request-size: 10MB
+  
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/ImportDS
+    url: jdbc:postgresql://localhost:5432/app
     username: postgres
     password: postgres
   jpa:

@@ -30,6 +30,11 @@ public class Producto {
 	
 	@Transient
 	private Integer categoriaId;
+	
+	
+	@Column(name = "image", nullable = false, length =255)
+	private String image;
+	
 
 	public Integer getIdProducto() {
 		return idProducto;
@@ -69,6 +74,14 @@ public class Producto {
 
 	public void setCategoriaId(Integer categoriaId) {
 		this.categoriaId = categoriaId;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 

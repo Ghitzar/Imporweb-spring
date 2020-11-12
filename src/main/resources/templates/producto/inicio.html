@@ -31,6 +31,7 @@
 					<th scope="col">Precio</th>
 					<th scope="col">Categoria</th>
 					<th scope="col">Marca</th>
+					<th scope="col">Imagen</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -40,6 +41,9 @@
 					<td th:text="${producto.precio}"></td>
 					<td th:text="${producto.categoria.nombreCategoria}"></td>
                     <td th:text="${producto.categoria.marca.nombreMarca}"></td>
+                    <td>
+                    	<img th:src="@{'/uploads/'+${producto.image}}"  height="50">	
+                    </td>
 				</tr>
 			</tbody>
 		</table>
@@ -47,7 +51,7 @@
 
 
 	<!-- Obtener data mediante un formulario -->
-	<form th:action="@{/productos/save}" th:object="${producto}"
+	<form th:action="@{/productos/save}" th:object="${producto}" enctype="multipart/form-data"
 		method="post">
 		<div class="form-row">
 
@@ -67,15 +71,25 @@
 						th:text="${categoria.nombreCategoria}"></option>
 				</select>
 			</div>
+			
+			
+		
+			<label for="imagen">Imagen</label>
+			<div>
+				<input type="file" name="file" class="col-md-6">
+			</div>
+			
 
-		</div>
+	
 
 
 		<button type="submit" class="btn btn-primary">Grabar</button>
 
 	</form>
     </div>
-	<footer th:replace="fragmentos/template ::piedepagina"></footer>
-	
+    <br/>
+    <br/>	
+<footer th:replace="fragmentos/template ::piedepagina"></footer>
+  
 </body>
 </html>
