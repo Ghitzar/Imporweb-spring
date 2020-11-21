@@ -32,7 +32,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="cliente : ${proveedores}">
+				<tr th:each="proveedor : ${proveedores}">
 					<th scope="row" th:text="${proveedor.idProveedor}"></th>
 					<td th:text="${proveedor.nombreProveedor}"></td>
 					<td th:text="${proveedor.telefono}"></td>
@@ -41,34 +41,14 @@
 			</tbody>
 		</table>
 	</div>
+	
+	<div class="card-footer text-center">
+	<a  th:href="@{/proveedor/new}" class="btn btn-primary"><i class="fas fa-plus"></i> Registrar Proveedor</a>
+	<a  th:href="@{/proveedor/view}" class="btn btn-primary"><i class="fas fa-plus"></i> Listar Proveedor</a>
+	</div>
+	
 
 
-	<!-- Obtener data mediante un formulario -->
-	<form th:action="@{/proveedores/save}" th:object="${proveedor}" method="post">
-		<div class="form-row">
-
-			<div class="col">
-				<input type="text" class="form-control" th:field="*{nombreProveedor}"
-					placeholder="Nombre">
-			</div>
-			
-			<div class="col">
-				<input type="text" class="form-control" th:field="*{telefono}"
-					placeholder="Telefono">
-			</div>
-			
-			<div class="col">
-				<input type="text" class="form-control" th:field="*{email}"
-					placeholder="Email">
-			</div>
-
-
-		</div>
-
-
-		<button type="submit" class="btn btn-primary">Grabar</button>
-
-	</form>
 	<footer th:replace="fragmentos/template ::piedepagina"></footer>
 
 

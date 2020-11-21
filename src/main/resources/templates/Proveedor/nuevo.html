@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/chosen.min.css}">
+<link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+<link rel="stylesheet" th:href="@{/css/solid.min.css}">
+<script src="https://kit.fontawesome.com/a4c335f472.js" crossorigin="anonymous"></script>
+
+<title>Importweb</title>
+</head>
+<body>
+
+	<nav th:replace="fragmentos/template ::fragmento"></nav>
+
+	<h1>Proveedores</h1>
+
+	<!-- Obtener data mediante un formulario -->
+						<form th:action="@{/proveedor/save}" th:object="${proveedor}"
+						method="post">
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="dni">Nombre de proveedor</label> <input type="text"
+									class="form-control" th:field="*{nombreProveedor}"
+									placeholder="ingrese el nombre" th:errorclass="'form-control alert-danger'">
+									<small class="form-text text-danger" th:if="${#fields.hasErrors('nombreProveedor')}" 
+									th:errors="*{nombreProveedor}"></small>
+							</div>
+							</div>
+				
+							<div class="form-group col-md-6">
+								<label for="nombres">Telefono</label> <input type="text"
+									class="form-control" th:field="*{telefono}"
+									placeholder="ingrese el telefono "th:errorclass="'form-control alert-danger'">
+									<small class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}" 
+									th:errors="*{telefono}"></small>
+							</div>
+							
+							<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="apellidos">Email</label> <input type="text"
+									class="form-control" th:field="*{email}"
+									placeholder="ingrese el email"th:errorclass="'form-control alert-danger'">
+									<small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" 
+									th:errors="*{email}"></small>
+
+							</div>
+						</div>
+
+						<button type="submit" class="btn btn-success">
+							<i class="fas fa-save"></i> Grabar
+						</button>
+						<a th:href="@{/proveedor}" class="btn btn-danger"><i
+							class="fas fa-ban"></i> Cancelar </a>
+							
+					</form>
+					
+					<p th:text="${msmok}" class="from-text text-success"></p>
+				<p th:text="${msmerror}" class="from-text text-danger"></p>
+				
+	<footer th:replace="fragmentos/template ::piedepagina"></footer>
+
+
+</body>
+</html>

@@ -3,7 +3,6 @@ package pe.edu.upc.controllers;
 import java.util.List;
 import java.util.Optional;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,69 +11,58 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
-import pe.edu.upc.services.ProveedorService;
-import pe.edu.upc.models.entities.Proveedor;
-
-
+import pe.edu.upc.models.entities.Transporte;
+import pe.edu.upc.services.TransporteService;
 @Controller
-@RequestMapping("/proveedor")
-@SessionAttributes("proveedor")
-public class ProveedorController {
+@RequestMapping("/transportes")
+public class TransporteController {
 
 	@Autowired
-	private ProveedorService ProveedorService;
+	private  TransporteService TransporteService;
 	
 	@GetMapping
 	public String inicio(Model model) {
-		Proveedor proveedor = new Proveedor();
+		Transporte transporte = new Transporte();
 		try {
-			List<Proveedor> proveedores = ProveedorService.findAll();
-			model.addAttribute("proveedores", proveedores);
-			model.addAttribute("proveedor", proveedor);
-		
+			List<Transporte> transportes = TransporteService.findAll();
+			model.addAttribute("transportes", transportes);
+			model.addAttribute("transporte", transporte);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		return "proveedor/listar";
-	}
-	
-	@GetMapping("new")
-	public String nuevo(Model model) {
-		Proveedor proveedor =new Proveedor();
-		model.addAttribute("proveedor",proveedor);
-		return "proveedor/nuevo";
+		return "transporte/inicio";
 	}
 	
 	@PostMapping("save")
-	public String save(@ModelAttribute("proveedor") Proveedor proveedor) {
+	public String save(@ModelAttribute("transporte") Transporte transporte) {
 		try {
-			ProveedorService.save(proveedor);
+			TransporteService.save(transporte);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		return "proveedor/nuevo";
+		return "redirect:/transportes";
 	}
+	
 	@GetMapping("/{id]/p")
 	public String view(@PathVariable("id") Integer id, Model model) {
 		try {
-			Optional<Proveedor> optional = ProveedorService.findById(id);
+			Optional<Transporte> optional = TransporteService.findById(id);
 			if(optional.isPresent()) {
-				model.addAttribute("proveedor", optional.get());
-				return "proveedor/view";
+				model.addAttribute("transporte", optional.get());
+				return "transporte/view";
 			}
 		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}
-		return "redirect:/proveedores";
+		return "redirect:/transportes";
 	}
 	
 	@GetMapping("search")
 	public String search() {
-		return "proveedor/search";
+		return "transporte/search";
 	}
 }
