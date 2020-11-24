@@ -9,7 +9,7 @@ spring:
   
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/ImportDS
+    url: jdbc:postgresql://localhost:5432/app
     username: postgres
     password: postgres
   jpa:

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pe.edu.upc.models.entities.Transporte;
-import pe.edu.upc.models.repositories.ProveedorRepository;
 import pe.edu.upc.models.repositories.TransporteRepository;
 import pe.edu.upc.services.TransporteService;
 

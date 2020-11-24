@@ -7,7 +7,7 @@
 	<header th:replace="layout/layout :: header"></header>
 	<main>
 	<section class="container">
-		<h3>Resultado de la Búsqueda: <span th:text="${producto.nombreProdcuto}"></span></h3>
+		<h3>Resultado de la Búsqueda: <span th:text="${producto.nombreProducto}"></span></h3>
 		
 		<div style="display:flex;">
 			<div th:each="producto : ${productos}" class="card" style="width: 18rem; margin:10px;">

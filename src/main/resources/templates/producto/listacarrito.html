@@ -18,7 +18,7 @@
 
 	<nav th:replace="fragmentos/template ::fragmento"></nav>
 
-	<div class="container my-4" th:if="${books.size()>0}">
+	<div class="container my-4" th:if="${productos.size()>0}">
 		<a th:href="@{/}" class="btn btn-primary btn-xs">Regresar</a>
 
 		<div class="card">
@@ -49,12 +49,12 @@
 							<td> 
 								<img th:src="@{/images/adidas.jpg}" height="100"></td>
 							<td th:text="${producto.nombreProducto}"></td>
-							<td th:text="${producto.catgoria.nombreCategoria}"></td>
-							<td th:text="${producto.catgoria.marca.nombreMarca}" class="badge badge-secondary"></td>
+							<td th:text="${producto.categoria.nombreCategoria}"></td>
+							<td th:text="${producto.categoria.marca.nombreMarca}" class="badge badge-secondary"></td>
 							<td th:text="${producto.precio}"></td>
 							
 							<td><a th:href="@{/prodcutos/agregarLista/}+${producto.idProducto}"
-								onclick="return confirm('Estas seguro de eliminar este Libro')">Eliminar</a></td>
+								onclick="return confirm('Estas seguro de eliminar este producto')">Eliminar</a></td>
 
 						</tr>
 

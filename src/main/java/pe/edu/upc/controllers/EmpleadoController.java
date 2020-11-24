@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 import pe.edu.upc.models.entities.Empleado;
+import pe.edu.upc.models.entities.Producto;
 import pe.edu.upc.services.EmpleadoService;
 
 @Controller
@@ -42,6 +43,10 @@ public class EmpleadoController {
 		return "empleado/inicio";
 	}
 	
+	@ModelAttribute("productoBusqueda")
+	public Producto createModel() {
+	    return new Producto();
+	 	}
 	@PostMapping("save")
 	public String save(@ModelAttribute("empleado") Empleado empleado) {
 		try {

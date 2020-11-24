@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 import pe.edu.upc.models.entities.Marca;
+import pe.edu.upc.models.entities.Producto;
 import pe.edu.upc.services.MarcaService;
 
 @Controller
@@ -42,6 +43,11 @@ public class MarcaController {
 		return "marca/inicio";
 	}
 
+	@ModelAttribute("productoBusqueda")
+	public Producto createModel() {
+	    return new Producto();
+	 	}
+	
 	@PostMapping("save")
 	public String save(@ModelAttribute("marca") Marca marca) {
 		try {

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pe.edu.upc.models.entities.Categoria;
 import pe.edu.upc.models.entities.Marca;
+import pe.edu.upc.models.entities.Producto;
 import pe.edu.upc.services.CategoriaService;
 import pe.edu.upc.services.MarcaService;
 
@@ -44,6 +45,11 @@ public class CategoriaController {
 		return "categoria/inicio";
 	}
 
+	@ModelAttribute("productoBusqueda")
+	public Producto createModel() {
+	    return new Producto();
+	 	}
+	
 	@PostMapping("save")
 	public String save(@ModelAttribute("categoria") Categoria categoria) {
 		try {

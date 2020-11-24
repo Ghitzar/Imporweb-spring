@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -58,21 +59,25 @@ public class ProductoController {
 		return "producto/inicio";
 	}
 	
-//	@ModelAttribute("producto")
-//	public Producto createModel() {
-//	    return new Producto();
-//	}
+	@ModelAttribute("productoBusqueda")
+	public Producto createModel() {
+	    return new Producto();
+	 	}
 	
-//	@PostMapping("search")
-//	public String search(@ModelAttribute("producto") Producto producto, Model model) {	
-//		try {
-//			List<Producto> productos = productoService.findByNombreProducto(producto.getNombreProducto());
-//			model.addAttribute("productos", productos);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return "productos/result-search";
-//	}
+	@RequestMapping("/search")
+	public String search(Map<String, Object> model, @ModelAttribute Producto productoBusqueda) throws Exception {
+		List<Producto> listProductos;
+		productoBusqueda.setNombreProducto(productoBusqueda.getNombreProducto());
+		
+		listProductos = productoService.findByNombreProducto(productoBusqueda.getNombreProducto());
+
+		if (listProductos.isEmpty()) {
+			model.put("mensaje", "No se encontró");
+		}
+		model.put("productos", listProductos );
+		return "producto/buscarCategoria";
+
+	}
 
 	@PostMapping("save")
 	public String save(@ModelAttribute("producto") Producto producto,@RequestParam("file") MultipartFile image) {
@@ -137,7 +142,7 @@ public class ProductoController {
 //			objRedir.addFlashAttribute("mensaje", "Ocurrio un rochesin");
 //			return "redirect:/";
 //		}
-//		else {
+//	else {
 //			model.addAttribute("productos", productoSearch);
 //			return "producto/listacarrito";
 //	
@@ -145,9 +150,25 @@ public class ProductoController {
 //		}
 //		}
 	
-	
-	
-	
+//	 @RequestMapping("/agregarCarrito")
+//	    public String agregarCarrito(
+//	            Map<String, Object> model,
+//	            @RequestParam(value = "idProduct") Integer idProduct,
+//	            @RequestParam(value = "idCart") Integer idCart) {
+//	        try {
+//	            if (idCart != null && idCart > 0) {
+//	            	productoService.assignProductCart(idProduct, idCart);
+//	                model.put("listaProductos", productoService.getAll());
+//	            }
+//	        } catch(Exception ex) {
+//	            System.out.println(ex.getMessage());
+//	            model.put("mensaje", "Ocurrió un error");
+//	            model.put("listaProductos", productoService.getAll());
+//	        }
+//	        return "listacarrito";
+//	    }
+//	
+//	
 	
 	
 

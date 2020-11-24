@@ -11,6 +11,7 @@
 			<a class="navbar-brand" th:href="@{/}"> <img
 				th:src="@{/images/imporweb.png}" width="200" height="60" alt="logo"
 				align="middle"></img></a>
+				
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -18,13 +19,13 @@
 			</button>
 			
 			
-<!-- 			<form th:action="@{/productos/search}" th:object="${producto}" method="post" class="form-inline"> -->
-<!-- 				<input th:field="*{nombreProducto}" class="form-control mr-sm-2" -->
-<!-- 							type="search" placeholder="Buscar por nombre" aria-label="Search"> -->
-<!-- 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit"> -->
-<!-- 							<i class="fas fa-search"></i> -->
-<!-- 				</button> -->
-<!-- 			</form> -->
+			<form th:action="@{/productos/search}" th:object="${productoBusqueda}" method="post" class="form-inline">
+				<input th:field="*{nombreProducto}" class="form-control mr-sm-2"
+							type="search" placeholder="Buscar por nombre" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+							<i class="fas fa-search"></i>
+				</button>
+			</form>
 					
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 				<ul class="navbar-nav">
@@ -41,6 +42,12 @@
 
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/empleados}">Empleado</a></li>
+					
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/proveedores}">Proveedor</a></li>
+					
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/transportes}">Transporte</a></li>
 
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#"
@@ -53,6 +60,10 @@
 								class="dropdown-item" href="#">Another action</a> <a
 								class="dropdown-item" href="#">Something else here</a>
 						</div></li>
+						
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/pedidos}">Pedido</a></li>
+					
 				</ul>
 			</div>
 		</nav>
@@ -65,14 +76,14 @@
 		style="flex: 0 0 auto">
 		<div class="container ">
 			<nav class="row">
-				<!-- logo -->
+				logo
 				<a href="#"
 					class="col-3 text-rest text-uppercase d-flex align-items-center">
 					<img th:src="@{/images/tecnoware.png}" width="100" height="20"
 					alt="logo" align="middle">
 				</a>
 
-				<!-- menu1 -->
+				menu1
 				<ul class="col-3 list-unstyled">
 					<li class="font-weight-bold text-uppercase">Has pedidos con
 						confianza</li>
@@ -83,7 +94,7 @@
 
 				</ul>
 
-				<!-- menu2 -->
+				menu2
 				<ul class="col-3 list-unstyled">
 					<li class="font-weight-bold text-uppercase">Sobre Tecnoware</li>
 					<li><a href="#" class="text-reset">¿Quienes somos?</a></li>
@@ -91,16 +102,18 @@
 					<li><a href="#" class="text-reset">Comprobante Electrónico</a></li>
 
 				</ul>
-				<!-- redes sociales -->
+				redes sociales
 				<ul class="col-3 list-unstyled">
 					<li class="font-weight-bold text-uppercase">Siguenos</li>
 					<li class="d-flex justify-content-between">
-						<!--FB--> <a href="#" class="text-reset"><i
-							class="fab fa-facebook-f"></i></a> <!--TWITTER--> <a href="#"
-						class="text-reset"><i class="fab fa-twitter"></i></a> <!--INSTAGRAM-->
+						FB 
+						<a href="#" class="text-reset"><i class="fab fa-facebook-f"></i></a> 
+						TWITTER 
+						<a href="#" class="text-reset"><i class="fab fa-twitter"></i></a> 
+						INSTAGRAM
 						<a href="#" class="text-reset"><i class="fab fa-instagram"></i></a>
-						<!--PINTERES--> <a href="#" class="text-reset"><i
-							class="fab fa-pinterest-p"></i></a>
+						PINTERES 
+						<a href="#" class="text-reset"><i class="fab fa-pinterest-p"></i></a>
 					</li>
 				</ul>
 
@@ -122,7 +135,6 @@
 		<script th:src="@{/js/fontawesome.min.js}"></script>
 
 	</footer>
-
 
 
 
