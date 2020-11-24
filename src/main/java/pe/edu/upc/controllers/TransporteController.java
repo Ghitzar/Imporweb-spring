@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pe.edu.upc.models.entities.Producto;
 import pe.edu.upc.models.entities.Transporte;
 import pe.edu.upc.services.TransporteService;
 @Controller
@@ -35,6 +36,11 @@ public class TransporteController {
 		return "transporte/inicio";
 	}
 	
+	@ModelAttribute("productoBusqueda")
+	public Producto createModel() {
+	    return new Producto();
+	 	}
+		
 	@PostMapping("save")
 	public String save(@ModelAttribute("transporte") Transporte transporte) {
 		try {

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.services.ProveedorService;
+import pe.edu.upc.models.entities.Producto;
 import pe.edu.upc.models.entities.Proveedor;
 
 
@@ -40,6 +41,11 @@ public class ProveedorController {
 		}
 		return "proveedor/listar";
 	}
+	
+	@ModelAttribute("productoBusqueda")
+	public Producto createModel() {
+	    return new Producto();
+	 	}
 	
 	@GetMapping("new")
 	public String nuevo(Model model) {
