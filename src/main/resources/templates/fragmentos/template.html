@@ -1,5 +1,6 @@
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <meta charset="utf-8" />
 
 
@@ -31,25 +32,25 @@
 				<ul class="navbar-nav">
 
 					<li class="nav-item active"><a class="nav-link"
-						th:href="@{/marcas}">Marca</a></li>
+						th:href="@{/marcas}" sec:authorize="hasRole('ROLE_EMPLOYEE')" >Marca</a></li>
 					<li class="nav-item"><a class="nav-link"
-						th:href="@{/categorias}">Categoria</a></li>
+						th:href="@{/categorias}" sec:authorize="hasRole('ROLE_EMPLOYEE')" >Categoria</a></li>
 					<li class="nav-item"><a class="nav-link"
-						th:href="@{/productos}">Agregar Producto</a></li>
+						th:href="@{/productos}" sec:authorize="hasAnyRole('ROLE_EMPLOYEE', 'ROLE_CUSTOMER')" >Agregar Producto</a></li>
 
 					<li class="nav-item"><a class="nav-link"
-						th:href="@{/clientes}">Cliente</a></li>
+						th:href="@{/clientes}" sec:authorize="hasAnyRole('ROLE_EMPLOYEE', 'ROLE_CUSTOMER')" >Cliente</a></li>
 
 					<li class="nav-item"><a class="nav-link"
-						th:href="@{/empleados}">Empleado</a></li>
+						th:href="@{/empleados}"sec:authorize="hasRole('ROLE_EMPLOYEE')" >Empleado</a></li>
 					
 					<li class="nav-item"><a class="nav-link"
-						th:href="@{/proveedores}">Proveedor</a></li>
+						th:href="@{/proveedores}"sec:authorize="hasRole('ROLE_EMPLOYEE')" >Proveedor</a></li>
 					
 					<li class="nav-item"><a class="nav-link"
-						th:href="@{/transportes}">Transporte</a></li>
+						th:href="@{/transportes}"sec:authorize="hasRole('ROLE_EMPLOYEE')" >Transporte</a></li>
 
-					<li class="nav-item dropdown"><a
+					<li class="nav-item dropdown" sec:authorize="hasRole('ROLE_EMPLOYEE')"><a
 						class="nav-link dropdown-toggle" href="#"
 						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false"> Categoria </a>
@@ -60,9 +61,16 @@
 								class="dropdown-item" href="#">Another action</a> <a
 								class="dropdown-item" href="#">Something else here</a>
 						</div></li>
+
 						
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/pedidos}">Pedido</a></li>
+						
+			<li class="nav-item">
+		      <a class="btn btn-outline-warning" th:href="@{/login}" sec:authorize="isAnonymous()">
+		      	Iniciar Sesión
+	        </a>
+	        
 					
 				</ul>
 			</div>
