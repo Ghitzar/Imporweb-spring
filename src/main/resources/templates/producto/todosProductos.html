@@ -31,85 +31,51 @@
 <script src="https://kit.fontawesome.com/a4c335f472.js"
 	crossorigin="anonymous"></script>
 
-<title>Importweb</title>
+<title>Imporweb</title>
 </head>
 <body>
 
 	<nav th:replace="fragmentos/template2 ::fragmento"></nav>
-    <div class="container" style="min-heigt: clac(100vh)">
-	<h1>Agregar Productos</h1>
 
-	<div class="container">
+	<h1>Productos</h1>
 
-
-		<table class="table table-sm table-dark">
-			<thead>
-				<tr>
-					<th scope="col">#</th>
-					<th scope="col">Nombre de producto</th>
-					<th scope="col">Precio</th>
-					<th scope="col">Categoria</th>
-					<th scope="col">Marca</th>
-					<th scope="col">Imagen</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="producto : ${productos}">
-					<th scope="row" th:text="${producto.idProducto}"></th>
-					<td th:text="${producto.nombreProducto}"></td>
-					<td th:text="${producto.precio}"></td>
-					<td th:text="${producto.categoria.nombreCategoria}"></td>
-                    <td th:text="${producto.categoria.marca.nombreMarca}"></td>
-                    <td>
-                    	<img th:src="@{'/uploads/'+${producto.image}}"  height="50">	
-                    </td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-
-
-	<!-- Obtener data mediante un formulario -->
-	<form th:action="@{/productos/save}" th:object="${producto}" enctype="multipart/form-data"
-		method="post">
-		<div class="form-row">
-
-			<div class="col">
-				<input type="text" class="form-control"
-					th:field="*{nombreProducto}" placeholder="Nombre producto">
-			</div>
-			
-			<div class="col">
-				<input type="text" class="form-control"
-					th:field="*{precio}" placeholder="Precio">
-			</div>
-
-			<div class="col">
-				<select th:field="*{categoria}" class="form-control">
-					<option th:each="categoria : ${categorias}" th:value="${categoria.idCategoria}"
-						th:text="${categoria.nombreCategoria}"></option>
-				</select>
-			</div>
-			
-			
-		
-			<label for="imagen">Imagen</label>
-			<div>
-				<input type="file" name="file" class="col-md-6">
-			</div>
-			
-
+	<div class="container"> 
 	
+	<div class="row jumbotron">
+			<div th:each="producto: ${productos}" class="col-md-4 py-4">
+
+				<div class="card card1 shadow" style="width: 16rem;">
+					<div class="efecto_size">
+					
+						<img th:src="@{'/uploads/'+${producto.image}}" class="card-img-top"
+							 height="250">
+					</div>
+
+					<div class="card-body">
+					    
+					    <label th:text="${producto.categoria.marca.nombreMarca} "></label>
+					    
+						<h4 class="card-title" th:text="${producto.nombreProducto}"></h4>
+						
+						<label th:text=" ${'$ '} + ${producto.precio} +${' soles'}"></label> <br />
+						
+						<a href="#"  class="btn btn-primary">Agregar al carrito</a>
+							
+					
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	
+	
+	
+	</div> 
 
 
-		<button type="submit" class="btn btn-primary">Grabar</button>
 
-	</form>
-    </div>
-    <br/>
-    <br/>
 	<footer th:replace="fragmentos/template2 ::piedepagina"></footer>
-	
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="/js/popper.min.js"></script>
@@ -139,6 +105,6 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
-
+	
 </body>
 </html>
