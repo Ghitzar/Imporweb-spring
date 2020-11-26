@@ -46,8 +46,8 @@ public class TransporteController {
 	
 	@GetMapping("new")
 	public String nuevo(Model model) {
-		Proveedor proveedor =new Proveedor();
-		model.addAttribute("proveedor",proveedor);
+		Transporte transporte =new Transporte();
+		model.addAttribute("transporte",transporte);
 		return "transporte/nuevo";
 	}
 	
