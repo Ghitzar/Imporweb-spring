@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.models.entities.Producto;
+import pe.edu.upc.models.entities.Proveedor;
 import pe.edu.upc.models.entities.Transporte;
 import pe.edu.upc.services.TransporteService;
 @Controller
-@RequestMapping("/transportes")
+@RequestMapping("/transporte")
+@SessionAttributes("transporte")
 public class TransporteController {
 
 	@Autowired
@@ -29,18 +32,25 @@ public class TransporteController {
 			List<Transporte> transportes = TransporteService.findAll();
 			model.addAttribute("transportes", transportes);
 			model.addAttribute("transporte", transporte);
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		return "transporte/inicio";
+		return "transporte/listar";
 	}
-	
 	@ModelAttribute("productoBusqueda")
 	public Producto createModel() {
 	    return new Producto();
 	 	}
-		
+	
+	@GetMapping("new")
+	public String nuevo(Model model) {
+		Proveedor proveedor =new Proveedor();
+		model.addAttribute("proveedor",proveedor);
+		return "transporte/nuevo";
+	}
+	
 	@PostMapping("save")
 	public String save(@ModelAttribute("transporte") Transporte transporte) {
 		try {
@@ -49,9 +59,8 @@ public class TransporteController {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		return "redirect:/transportes";
+		return "transporte/nuevo";
 	}
-	
 	@GetMapping("/{id]/p")
 	public String view(@PathVariable("id") Integer id, Model model) {
 		try {
