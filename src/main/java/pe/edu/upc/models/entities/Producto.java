@@ -37,8 +37,8 @@ public class Producto {
 	
 	
 	
-	@ManyToOne	// paso 2 distrito_id
-	@JoinColumn(name = "pedido_id")	//3
+	@ManyToOne	
+	@JoinColumn(name = "pedido_id")	
 	private Pedido pedido;
 	
 
