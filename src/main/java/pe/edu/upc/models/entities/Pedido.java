@@ -7,7 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name = "pedidos")
@@ -30,6 +35,14 @@ public class Pedido {
 	@JoinColumn(name = "transporte_id")	//3
 	private Transporte transporte;
 	
+	@OneToMany(mappedBy = "pedido") // paso 1, 4
+	private List<Producto> productos;
+	
+	public Pedido() {
+		productos = new ArrayList<Producto>();
+	}
+
+
 	public Transporte getTransporte() {
 		return transporte;
 	}
