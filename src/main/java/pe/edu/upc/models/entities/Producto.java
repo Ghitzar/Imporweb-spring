@@ -1,5 +1,7 @@
 package pe.edu.upc.models.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -24,8 +27,8 @@ public class Producto {
 	@Column(name = "precio", nullable = false)
 	private Float precio;	
 	
-	@ManyToOne		// 2	
-	@JoinColumn(name = "categoria_id")	// 3
+	@ManyToOne			
+	@JoinColumn(name = "categoria_id")	
 	private Categoria categoria;
 	
 	@Transient
@@ -37,19 +40,10 @@ public class Producto {
 	
 	
 	
-	@ManyToOne	
-	@JoinColumn(name = "pedido_id")	
-	private Pedido pedido;
+	@OneToMany(mappedBy = "producto")
+	private List<DetallePedido> detallePedidos;
+
 	
-
-	public Pedido getPedido() {
-		return pedido;
-	}
-
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
-	}
-
 	public Integer getIdProducto() {
 		return idProducto;
 	}
@@ -98,8 +92,15 @@ public class Producto {
 		this.image = image;
 	}
 
+	public List<DetallePedido> getDetallePedidos() {
+		return detallePedidos;
+	}
 
-	
+	public void setDetallePedidos(List<DetallePedido> detallePedidos) {
+		this.detallePedidos = detallePedidos;
+	}
+
+
 	
 	
 	

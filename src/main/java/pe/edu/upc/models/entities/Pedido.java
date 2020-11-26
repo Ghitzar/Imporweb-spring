@@ -41,7 +41,12 @@ public class Pedido {
 	
 	@OneToMany(mappedBy = "pedido")
 	private List<DetallePedido> detallePedidos;
+	
+	@ManyToOne
+	@JoinColumn(name = "transporte_id")
+	private Transporte transporte;
 
+	
 	public Pedido() {
 		detallePedidos = new ArrayList<>();
 	}
@@ -93,6 +98,19 @@ public class Pedido {
 	public void setEstadoPedido(EstadoPedido estadoPedido) {
 		this.estadoPedido = estadoPedido;
 	}
+
+	public Transporte getTransporte() {
+		return transporte;
+	}
+
+	public void setTransporte(Transporte transporte) {
+		this.transporte = transporte;
+	}
+	
+	
+	
+	
+	
 	
 	
 }
