@@ -19,7 +19,7 @@
 
 	<nav th:replace="fragmentos/template ::fragmento"></nav>
 
-	<h1>Proveedores</h1>
+	<h1>Transporte</h1>
 
 	<!-- Obtener data mediante un formulario -->
 						<form th:action="@{/proveedor/save}" th:object="${proveedor}"
@@ -56,7 +56,7 @@
 						<button type="submit" class="btn btn-success">
 							<i class="fas fa-save"></i> Grabar
 						</button>
-						<a th:href="@{/proveedor}" class="btn btn-danger"><i
+						<a th:href="@{/transporte}" class="btn btn-danger"><i
 							class="fas fa-ban"></i> Cancelar </a>
 							
 					</form>

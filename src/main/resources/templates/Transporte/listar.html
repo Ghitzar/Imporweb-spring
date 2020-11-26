@@ -19,32 +19,32 @@
 
 	<nav th:replace="fragmentos/template ::fragmento"></nav>
 
-	<h1>Proveedores</h1>
+	<h1>Transporte</h1>
 
 	<div class="container">
 		<table class="table table-sm table-dark">
 			<thead>
 				<tr>
 					<th scope="col">#</th>
-					<th scope="col">Nombre de proveedor</th>
-					<th scope="col">Telefono</th>
-					<th scope="col">Email</th>
+					<th scope="col">Transporte</th>
+					<th scope="col">Nombre agencia</th>
+					<th scope="col">Tipo</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="proveedor : ${proveedores}">
-					<th scope="row" th:text="${proveedor.idProveedor}"></th>
-					<td th:text="${proveedor.nombreProveedor}"></td>
-					<td th:text="${proveedor.telefono}"></td>
-					<td th:text="${proveedor.email}"></td>
+				<tr th:each="transporte : ${transportes}">
+					<th scope="row" th:text="${transporte.idTransporte}"></th>
+					<td th:text="${transporte.nombreTransporte}"></td>
+					<td th:text="${transporte.nombreAgencia}"></td>
+					<td th:text="${transporte.tipo}"></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 	
 	<div class="card-footer text-center">
-	<a  th:href="@{/proveedor/new}" class="btn btn-primary"><i class="fas fa-plus"></i> Registrar Proveedor</a>
-	<a  th:href="@{/proveedor/view}" class="btn btn-primary"><i class="fas fa-plus"></i> Listar Proveedor</a>
+	<a  th:href="@{/transporte/new}" class="btn btn-primary"><i class="fas fa-plus"></i> Registrar Transporte</a>
+	<a  th:href="@{/transporte/view}" class="btn btn-primary"><i class="fas fa-plus"></i> Listar Transporte</a>
 	</div>
 	
 
