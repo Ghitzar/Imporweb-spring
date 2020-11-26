@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -59,25 +60,25 @@
 
 						<div
 							class="col-md-1.5 d-flex align-items-center py-md-5 px-1">
-							<a th:href="@{/todosProducto}"><span
+							<a th:href="@{/todosProducto}" sec:authorize="hasRole('ROLE_EMPLOYEE')"><span
 								class="text d-flex align-items-center"></span>Productos</a>
 						</div>
 
 						<div
 							class="col-md-1.5 d-flex align-items-center py-md-5 px-1">
-							<a href="http://localhost:8088/"><span
+							<a href="http://localhost:8088/" sec:authorize="hasRole('ROLE_EMPLOYEE')"><span
 								class="text d-flex align-items-center"></span>Lista carrito</a>
 						</div>
 						
 						<div
 							class="col-md-1.5 d-flex align-items-center py-md-5 px-1">
-							<a href="http://localhost:8088/"><span
+							<a href="http://localhost:8088/" sec:authorize="hasRole('ROLE_EMPLOYEE')"><span
 								class="text d-flex align-items-center"></span>Pedidos</a>
 						</div>
 						
 						<span></span>
 						<div
-							class="col-md-1.5 d-flex align-items-center py-md-5 px-1">
+							class="col-md-1.5 d-flex align-items-center py-md-5 px-1" sec:authorize="hasRole('ROLE_EMPLOYEE')">
 							<a class="nav-link dropdown-toggle" href="#"
 								id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
 								aria-haspopup="true" aria-expanded="false"> Categoria </a>
@@ -95,7 +96,7 @@
 							class="col-md-2 topper d-flex align-items-center align-items-stretch py-md-5">
 							<ul style="align-content: right">
 								<li class="nav-link"><form id="loginForm"
-										th:action="@{/login}" method="get">
+										th:action="@{/login}" sec:authorize="isAnonymous()" method="get">
 										<button class="btn btn-dark" type="submit">Iniciar
 											sesión</button>
 									</form></li>
@@ -106,6 +107,20 @@
 										<button class="btn btn-dark" type="submit">Registrate</button>
 									</form></li>
 							</ul>
+				<ul class="navbar-nav mr-auto" sec:authorize="isAuthenticated()">			      
+			      <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle btn btn-outline-warning" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          <span sec:authentication="name"></span>
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			          <!-- <a class="dropdown-item" th:href="@{/perfil}">Ver Perfil</a> -->
+			          <div class="dropdown-divider"></div>
+			          <a class="dropdown-item" th:href="@{/logout}">Cerrar sesión</a>
+			        </div>
+			      </li>
+						
+				</ul>
+							
 						</div>
 
 			</div>

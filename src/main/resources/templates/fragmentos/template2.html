@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -59,21 +60,21 @@
 
 					<div class="col-md-1.5 d-flex align-items-center py-md-5 px-1">
 						<a th:href="@{/todosProductos}"><span
-							class="text d-flex align-items-center"></span>Productos</a>
+							class="text d-flex align-items-center" sec:authorize="hasRole('ROLE_EMPLOYEE')"></span>Productos</a>
 					</div>
 
 					<div class="col-md-1.5 d-flex align-items-center py-md-5 px-1">
 						<a href="http://localhost:8088/"><span
-							class="text d-flex align-items-center"></span>Lista carrito</a>
+							class="text d-flex align-items-center" sec:authorize="hasRole('ROLE_EMPLOYEE')"></span>Lista carrito</a>
 					</div>
 
 					<div class="col-md-1.5 d-flex align-items-center py-md-5 px-1">
 						<a href="http://localhost:8088/"><span
-							class="text d-flex align-items-center"></span>Pedidos</a>
+							class="text d-flex align-items-center" sec:authorize="hasRole('ROLE_EMPLOYEE')"></span>Pedidos</a>
 					</div>
 
 					<span></span>
-					<div class="col-md-1.5 d-flex align-items-center py-md-5 px-1">
+					<div class="col-md-1.5 d-flex align-items-center py-md-5 px-1" sec:authorize="hasRole('ROLE_EMPLOYEE')">
 						<a class="nav-link dropdown-toggle" href="#"
 							id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false"> Categoria </a>
@@ -86,14 +87,14 @@
 						</div>
 					</div>
 
-					<div class="col-md-1.5 d-flex align-items-center py-md-5 px-1">
+					<div class="col-md-1.5 d-flex align-items-center py-md-5 px-1" sec:authorize="isAuthenticated()">
 						<p class="mb-0 d-flex d-block">
 						<ul style="align-content: right">
 							<li class="nav-link"><form id="logoutForm"
 									th:action="@{/logout}" method="post">
 									<button  class="btn btn-dark" style=""
 										onclick="document.getElementById('logoutForm').submit();"
-										type="submit">Salir</button>
+										type="submit" th:href="@{/logout}">Salir</button>
 								</form></li>
 						</ul>
 						
@@ -120,21 +121,21 @@
 					<ul class="navbar-nav mr-auto">
 
 						<li class="nav-item"><a class="nav-link" href="#about"
-							th:href="@{/bienvenido}">bienvenido</a></li>
+							th:href="@{/bienvenido}" sec:authorize="hasAnyRole('ROLE_EMPLOYEE', 'ROLE_CUSTOMER')">bienvenido</a></li>
 						<li class="nav-item"><a class="nav-link" href="#about"
-							th:href="@{/marcas}">Marca</a></li>
+							th:href="@{/marcas}" sec:authorize="hasRole('ROLE_EMPLOYEE')">Marca</a></li>
 						<li class="nav-item"><a class="nav-link" href="#about"
-							th:href="@{/categorias}">Categoria</a></li>
+							th:href="@{/categorias}" sec:authorize="hasRole('ROLE_EMPLOYEE')">Categoria</a></li>
 						<li class="nav-item"><a class="nav-link" href="#about"
-							th:href="@{/productos}">Agregar productos</a></li>
+							th:href="@{/productos}" "hasAnyRole('ROLE_EMPLOYEE', 'ROLE_CUSTOMER')">Agregar productos</a></li>
 						<li class="nav-item"><a class="nav-link" href="#about"
-							th:href="@{/clientes}">Cliente</a></li>
+							th:href="@{/clientes}" "hasAnyRole('ROLE_EMPLOYEE', 'ROLE_CUSTOMER')">Cliente</a></li>
 						<li class="nav-item"><a class="nav-link" href="#about"
-							th:href="@{/empleados}">Empleado</a></li>
+							th:href="@{/empleados}" sec:authorize="hasRole('ROLE_EMPLOYEE')">Empleado</a></li>
 						<li class="nav-item"><a class="nav-link" href="#about"
-							th:href="@{/proveedores}">Proveedores</a></li>
+							th:href="@{/proveedores}" sec:authorize="hasRole('ROLE_EMPLOYEE')">Proveedores</a></li>
 						<li class="nav-item"><a class="nav-link" href="#about"
-							th:href="@{/transporte}">Transporte</a></li>
+							th:href="@{/transporte}" sec:authorize="hasRole('ROLE_EMPLOYEE')">Transporte</a></li>
 					</ul>
 				</div>
 			</div>
