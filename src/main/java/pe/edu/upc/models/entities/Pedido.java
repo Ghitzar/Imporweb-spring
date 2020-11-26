@@ -1,5 +1,9 @@
 package pe.edu.upc.models.entities;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,70 +11,101 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import pe.edu.upc.utils.EstadoPedido;
 
 @Entity
 @Table(name = "pedidos")
 public class Pedido {
-	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idPedido;
+	private Integer id;
 	
-	@Column(name = "cantidad", nullable = false, length = 20)
-	private String cantidad;
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
+	private Cliente cliente;
+	
+	@Column(name = "fecha_pedido", nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechaPedido;
+	
+	@Column(name = "precio_total", nullable = false)
+	private Float precioTotal;	
+	
+	@Column(name = "estado_pedido", nullable = false)
+	private EstadoPedido estadoPedido;
+	
+	@OneToMany(mappedBy = "pedido")
+	private List<DetallePedido> detallePedidos;
+	
 
-
-	@Column(name = "monto", nullable = false, length = 20)
-	private String monto;
-
-
-	@ManyToOne	// paso 2 distrito_id
-	@JoinColumn(name = "transporte_id")	//3
+	@ManyToOne
+	@JoinColumn(name = "transporte_id")		
 	private Transporte transporte;
-	
+
+	public Pedido() {
+		detallePedidos = new ArrayList<>();
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Date getFechaPedido() {
+		return fechaPedido;
+	}
+
+	public void setFechaPedido(Date fechaPedido) {
+		this.fechaPedido = fechaPedido;
+	}
+
+	public Float getPrecioTotal() {
+		return precioTotal;
+	}
+
+	public void setPrecioTotal(Float precioTotal) {
+		this.precioTotal = precioTotal;
+	}
+
+	public List<DetallePedido> getDetallePedidos() {
+		return detallePedidos;
+	}
+
+	public void setDetallePedidos(List<DetallePedido> detallePedidos) {
+		this.detallePedidos = detallePedidos;
+	}
+
+	public EstadoPedido getEstadoPedido() {
+		return estadoPedido;
+	}
+
+	public void setEstadoPedido(EstadoPedido estadoPedido) {
+		this.estadoPedido = estadoPedido;
+	}
+
 	public Transporte getTransporte() {
 		return transporte;
 	}
 
-
 	public void setTransporte(Transporte transporte) {
 		this.transporte = transporte;
 	}
-
-
-	public Integer getIdPedido() {
-		return idPedido;
-	}
-
-
-	public void setIdPedido(Integer idPedido) {
-		this.idPedido = idPedido;
-	}
-
-
-	public String getCantidad() {
-		return cantidad;
-	}
-
-
-	public void setCantidad(String cantidad) {
-		this.cantidad = cantidad;
-	}
-
-
-	public String getMonto() {
-		return monto;
-	}
-
-
-	public void setMonto(String monto) {
-		this.monto = monto;
-	}
 	
-
-	
-
 	
 }

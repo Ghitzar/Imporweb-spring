@@ -40,6 +40,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 				.antMatchers("/empleados").hasRole("EMPLOYEE")
 				.antMatchers("/proveedores").hasRole("EMPLOYEE")
 				.antMatchers("/transporte").hasRole("EMPLOYEE")
+				.antMatchers("/pedidos/mis").hasRole("CUSTOMER")
+				.antMatchers("/carritos/mis").hasRole("CUSTOMER")
 
 
 				//.antMatchers("/categorias/**/p").hasRole("CUSTOMER")

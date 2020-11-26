@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -31,50 +32,45 @@
 <script src="https://kit.fontawesome.com/a4c335f472.js"
 	crossorigin="anonymous"></script>
 
-<title>Importweb</title>
+<title>Imporweb</title>
 </head>
 <body>
 
+
 	<nav th:replace="fragmentos/template2 ::fragmento"></nav>
-
-	<h1>  Producto</h1>
-
-	<div class="container"> 
 	
-	<div class="row jumbotron">
-			<div th:each="producto: ${productos}" class="col-md-4 py-4">
-
-				<div class="card card1 shadow" style="width: 16rem;">
-					<div class="efecto_size">
-					
-						<img th:src="@{'/uploads/'+${producto.image}}" class="card-img-top"
-							 height="250">
-					</div>
-
-					<div class="card-body">
-					    
-					    <label th:text="${producto.categoria.marca.nombreMarca} "></label>
-					    
-						<h4 class="card-title" th:text="${producto.nombreProducto}"></h4>
-						
-						<label th:text=" ${'$ '} + ${producto.precio} +${' soles'}"></label> <br />
-						
-						<a href="#"  class="btn btn-primary">Agregar al carrito</a>
-							
-					
-					</div>
-				</div>
-
+	<h1>Pedidos</h1>
+	
+	<main>
+	<section class="container">
+		<nav aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item">Cliente</li>
+		    <li class="breadcrumb-item active" aria-current="page" >Mis pedidos 
+		        <span class="badge badge-light" th:text="${#lists.size(clientes.pedidos)}">2</span>
+		    </li>
+		  </ol>
+		</nav>
+		
+		<div style="display:flex;">
+			<div th:each="pedido : ${clientes.pedidos}" th:if="${{pedido.estadoPedido}} != 'CARRITO'" class="card border-danger mb-3" 
+				style="width: 18rem; margin:10px;">
+			  <div class="card-header text-white bg-danger" > Pedido Nro: <span th:text="${pedido.id}"></span> </div>
+			  <div class="card-body">
+			    <h5 class="card-title"> Estado: <span th:text="${pedido.estadoPedido}"></span> </h5>
+			    <p class="card-text">Fecha: <span th:text="${pedido.fechaPedido}"></span></p>
+			    <p class="card-text">Precio: <strong>S/<span th:text="${pedido.precioTotal}"></span></strong></p>
+			    <p class="card-text"></p>
+			    <a th:href="@{'/pedidos/' + ${pedido.id} + '/d'}" class="btn btn-info">Ver detalle</a>
+			  </div>
 			</div>
-
 		</div>
+		
+		
+	</section>
+	</main>
 	
 	
-	
-	</div> 
-
-
-
 	<footer th:replace="fragmentos/template2 ::piedepagina"></footer>
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/jquery-migrate-3.0.1.min.js"></script>
@@ -105,7 +101,5 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
-	
-	
 </body>
 </html>

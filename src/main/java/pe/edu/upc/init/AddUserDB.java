@@ -22,78 +22,78 @@ public class AddUserDB implements CommandLineRunner{
 		
 		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
 		
-		/*Usuario cliente1 = new Usuario();
-		cliente1.setUsername("cliente1");
-		cliente1.setPassword( bcpe.encode("cliente") );
-		cliente1.setEnable(true);
-		cliente1.setSegmento(Segmento.CLIENTE);
-		cliente1.setIdSegmento(1);
-		
-		Usuario cliente2 = new Usuario();
-		cliente2.setUsername("cliente2");
-		cliente2.setPassword( bcpe.encode("cliente") );
-		cliente2.setEnable(true);
-		cliente2.setSegmento(Segmento.CLIENTE);
-		cliente2.setIdSegmento(2);
-		
-		Usuario cliente3 = new Usuario();
-		cliente3.setUsername("cliente3");
-		cliente3.setPassword( bcpe.encode("cliente") );
-		cliente3.setEnable(true);
-		cliente3.setSegmento(Segmento.CLIENTE);
-		cliente3.setIdSegmento(3);
-		
-		Usuario cliente4 = new Usuario();
-		cliente4.setUsername("cliente4");
-		cliente4.setPassword( bcpe.encode("cliente") );
-		cliente4.setEnable(true);
-		cliente4.setSegmento(Segmento.CLIENTE);
-		cliente4.setIdSegmento(4);
-		
-		Usuario empleado1 = new Usuario();
-		empleado1.setUsername("empleado1");
-		empleado1.setPassword( bcpe.encode("empleado") );
-		empleado1.setEnable(true);
-		empleado1.setSegmento(Segmento.EMPLEADO);
-		empleado1.setIdSegmento(1);
-		
-		Usuario empleado2 = new Usuario();
-		empleado2.setUsername("empleado2");
-		empleado2.setPassword( bcpe.encode("empleado") );
-		empleado2.setEnable(true);
-		empleado2.setSegmento(Segmento.EMPLEADO);
-		empleado2.setIdSegmento(2);
-		
-		Usuario empleado3 = new Usuario();
-		empleado3.setUsername("empleado3");
-		empleado3.setPassword( bcpe.encode("empleado") );
-		empleado3.setEnable(true);
-		empleado3.setSegmento(Segmento.EMPLEADO);
-		empleado3.setIdSegmento(3);
-		
-		// ROLE_CUSTOMER, ROLE_EMPLOYEE, ROLE_ADMIN
-		cliente1.addAuthority("ROLE_CUSTOMER");
-		cliente2.addAuthority("ROLE_CUSTOMER");
-		cliente3.addAuthority("ROLE_CUSTOMER");
-		cliente4.addAuthority("ROLE_CUSTOMER");
-		
-		empleado1.addAuthority("ROLE_EMPLOYEE");
-		empleado2.addAuthority("ROLE_EMPLOYEE");
-		empleado3.addAuthority("ROLE_EMPLOYEE");
-		
-		// ACCESS_
-		cliente1.addAuthority("ACCESS_DESC");
-		cliente2.addAuthority("ACCESS_PROMO");
-	
-		usuarioRepository.save(cliente1);
-		usuarioRepository.save(cliente2);
-		usuarioRepository.save(cliente3);
-		usuarioRepository.save(cliente4);
-		
-		usuarioRepository.save(empleado1);
-		usuarioRepository.save(empleado2);
-		usuarioRepository.save(empleado3);*/
-		
+//		Usuario cliente1 = new Usuario();
+//		cliente1.setUsername("cliente1");
+//		cliente1.setPassword( bcpe.encode("cliente") );
+//		cliente1.setEnable(true);
+//		cliente1.setSegmento(Segmento.CLIENTE);
+//		cliente1.setIdSegmento(1);
+//		
+//		Usuario cliente2 = new Usuario();
+//		cliente2.setUsername("cliente2");
+//		cliente2.setPassword( bcpe.encode("cliente") );
+//		cliente2.setEnable(true);
+//		cliente2.setSegmento(Segmento.CLIENTE);
+//		cliente2.setIdSegmento(2);
+//		
+//		Usuario cliente3 = new Usuario();
+//		cliente3.setUsername("cliente3");
+//		cliente3.setPassword( bcpe.encode("cliente") );
+//		cliente3.setEnable(true);
+//		cliente3.setSegmento(Segmento.CLIENTE);
+//		cliente3.setIdSegmento(3);
+//		
+//		Usuario cliente4 = new Usuario();
+//		cliente4.setUsername("cliente4");
+//		cliente4.setPassword( bcpe.encode("cliente") );
+//		cliente4.setEnable(true);
+//		cliente4.setSegmento(Segmento.CLIENTE);
+//		cliente4.setIdSegmento(4);
+//		
+//		Usuario empleado1 = new Usuario();
+//		empleado1.setUsername("empleado1");
+//		empleado1.setPassword( bcpe.encode("empleado") );
+//		empleado1.setEnable(true);
+//		empleado1.setSegmento(Segmento.EMPLEADO);
+//		empleado1.setIdSegmento(1);
+//		
+//		Usuario empleado2 = new Usuario();
+//		empleado2.setUsername("empleado2");
+//		empleado2.setPassword( bcpe.encode("empleado") );
+//		empleado2.setEnable(true);
+//		empleado2.setSegmento(Segmento.EMPLEADO);
+//		empleado2.setIdSegmento(2);
+//		
+//		Usuario empleado3 = new Usuario();
+//		empleado3.setUsername("empleado3");
+//		empleado3.setPassword( bcpe.encode("empleado") );
+//		empleado3.setEnable(true);
+//		empleado3.setSegmento(Segmento.EMPLEADO);
+//		empleado3.setIdSegmento(3);
+//		
+//		// ROLE_CUSTOMER, ROLE_EMPLOYEE, ROLE_ADMIN
+//		cliente1.addAuthority("ROLE_CUSTOMER");
+//		cliente2.addAuthority("ROLE_CUSTOMER");
+//		cliente3.addAuthority("ROLE_CUSTOMER");
+//		cliente4.addAuthority("ROLE_CUSTOMER");
+//		
+//		empleado1.addAuthority("ROLE_EMPLOYEE");
+//		empleado2.addAuthority("ROLE_EMPLOYEE");
+//		empleado3.addAuthority("ROLE_EMPLOYEE");
+//		
+//		// ACCESS_
+//		cliente1.addAuthority("ACCESS_DESC");
+//		cliente2.addAuthority("ACCESS_PROMO");
+//	
+//		usuarioRepository.save(cliente1);
+//		usuarioRepository.save(cliente2);
+//		usuarioRepository.save(cliente3);
+//		usuarioRepository.save(cliente4);
+//		
+//		usuarioRepository.save(empleado1);
+//		usuarioRepository.save(empleado2);
+//		usuarioRepository.save(empleado3);
+//		
 		///////////////////////////////////
 		
 		/*Usuario cliente11 = new Usuario();

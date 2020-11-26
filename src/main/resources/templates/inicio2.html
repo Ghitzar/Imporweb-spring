@@ -58,27 +58,29 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 				</form>
 				</div>
 
-						<div
-							class="col-md-1.5 d-flex align-items-center py-md-5 px-1">
-							<a th:href="@{/todosProducto}" sec:authorize="hasRole('ROLE_EMPLOYEE')"><span
-								class="text d-flex align-items-center"></span>Productos</a>
-						</div>
+<!-- 						<div -->
+<!-- 							class="col-md-1.5 d-flex align-items-center py-md-5 px-1"> -->
+<!-- 							<a th:href="@{/todosProducto}" sec:authorize="hasRole('ROLE_CUSTOMER')"><span -->
+<!-- 								class="text d-flex align-items-center"></span>Productos</a> -->
+<!-- 						</div> -->
 
 						<div
 							class="col-md-1.5 d-flex align-items-center py-md-5 px-1">
-							<a href="http://localhost:8088/" sec:authorize="hasRole('ROLE_EMPLOYEE')"><span
+							<a th:href="@{/carritos/mis}" ><span
 								class="text d-flex align-items-center"></span>Lista carrito</a>
 						</div>
 						
 						<div
 							class="col-md-1.5 d-flex align-items-center py-md-5 px-1">
-							<a href="http://localhost:8088/" sec:authorize="hasRole('ROLE_EMPLOYEE')"><span
-								class="text d-flex align-items-center"></span>Pedidos</a>
+							<a th:href="@{/pedidos/mis}"><span class="text d-flex align-items-center"></span>Pedidos</a>
+
+						
+								
 						</div>
 						
 						<span></span>
 						<div
-							class="col-md-1.5 d-flex align-items-center py-md-5 px-1" sec:authorize="hasRole('ROLE_EMPLOYEE')">
+							class="col-md-1.5 d-flex align-items-center py-md-5 px-1" >
 							<a class="nav-link dropdown-toggle" href="#"
 								id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
 								aria-haspopup="true" aria-expanded="false"> Categoria </a>
@@ -101,31 +103,65 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 											sesión</button>
 									</form></li>
 							</ul>
-							<ul style="align-content: right">
-								<li class="nav-link"><form id="createAccountFrm"
-										th:action="@{/security/createAccount}" method="get">
-										<button class="btn btn-dark" type="submit">Registrate</button>
-									</form></li>
-							</ul>
-				<ul class="navbar-nav mr-auto" sec:authorize="isAuthenticated()">			      
-			      <li class="nav-item dropdown">
-			        <a class="nav-link dropdown-toggle btn btn-outline-warning" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			          <span sec:authentication="name"></span>
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			          <!-- <a class="dropdown-item" th:href="@{/perfil}">Ver Perfil</a> -->
-			          <div class="dropdown-divider"></div>
-			          <a class="dropdown-item" th:href="@{/logout}">Cerrar sesión</a>
-			        </div>
-			      </li>
-						
-				</ul>
+<!-- 							<ul style="align-content: right"> -->
+<!-- 								<li class="nav-link"><form id="createAccountFrm" -->
+<!-- 										th:action="@{/security/createAccount}" method="get"> -->
+<!-- 										<button class="btn btn-dark" type="submit">Registrate</button> -->
+<!-- 									</form></li> -->
+<!-- 							</ul> -->
 							
-						</div>
+					<div class="col-md-1.5 d-flex align-items-center py-md-5 px-1"
+						sec:authorize="isAuthenticated()">
+						<p class="mb-0 d-flex d-block">
+						<ul style="align-content: right">
+							<li class="nav-link"><form id="logoutForm"
+									th:action="@{/logout}" method="post">
+									<button class="btn btn-dark" style=""
+										onclick="document.getElementById('logoutForm').submit();"
+										type="submit" th:href="@{/logout}">Salir</button>
+								</form></li>
+						</ul>
+
+					</div>
+				</div>
 
 			</div>
 		</div>
 	</div>
+	<nav
+		class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light"
+		id="ftco-navbar">
+		<div class="container d-flex align-items-center">
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#ftco-nav" aria-controls="ftco-nav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav mr-auto">
+
+				
+					<li class="nav-item"><a class="nav-link" href="#about"
+						th:href="@{/marcas}" sec:authorize="hasRole('ROLE_EMPLOYEE')">Marca</a></li>
+					<li class="nav-item"><a class="nav-link" href="#about"
+						th:href="@{/categorias}" sec:authorize="hasRole('ROLE_EMPLOYEE')">Categoria</a></li>
+					<li class="nav-item"><a class="nav-link" href="#about"
+						th:href="@{/productos}" sec:authorize="hasRole('ROLE_EMPLOYEE')">Agregar
+							productos</a></li>
+<!-- 					<li class="nav-item"><a class="nav-link" href="#about" -->
+<!-- 						th:href="@{/clientes}" sec:authorize="hasRole('ROLE_EMPLOYEE')">Cliente</a></li> -->
+<!-- 					<li class="nav-item"><a class="nav-link" href="#about" -->
+<!-- 						th:href="@{/empleados}" sec:authorize="hasRole('ROLE_EMPLOYEE')">Empleado</a></li> -->
+					<li class="nav-item"><a class="nav-link" href="#about"
+						th:href="@{/proveedores}" sec:authorize="hasRole('ROLE_EMPLOYEE')">Proveedores</a></li>
+					<li class="nav-item"><a class="nav-link" href="#about"
+						th:href="@{/transporte}" sec:authorize="hasRole('ROLE_EMPLOYEE')">Transporte</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
 
 
 

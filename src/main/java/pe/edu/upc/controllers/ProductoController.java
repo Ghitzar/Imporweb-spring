@@ -132,6 +132,12 @@ public class ProductoController {
 		return "producto/buscarCategoria";
 	}
 	
+	
+	
+	
+	
+	
+	
 //	@GetMapping("/agregarLista/{id}") 	
 //	public String agregarLista(@PathVariable Integer id, Model model,RedirectAttributes objRedir) 
 //	
