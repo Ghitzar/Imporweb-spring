@@ -35,6 +35,20 @@ public class Producto {
 	@Column(name = "image", nullable = false, length =255)
 	private String image;
 	
+	
+	
+	@ManyToOne	// paso 2 distrito_id
+	@JoinColumn(name = "pedido_id")	//3
+	private Pedido pedido;
+	
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
 
 	public Integer getIdProducto() {
 		return idProducto;
